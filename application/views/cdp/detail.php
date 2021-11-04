@@ -1,5 +1,5 @@
 <div class="container">
-<div class="card round shadow-sm my-5">
+   <div class="card round shadow-sm my-5">
       <div class="card-body">
 
          <div id="buttons2" style="padding: 10px; margin-bottom: 10px;width: 25%;">
@@ -40,19 +40,19 @@
     var buttons2 = new $.fn.dataTable.Buttons(table2, {
       buttons: [{
          extend: 'csv',
-         title: 'Data Lengkap',
+         title: 'Detail Data',
          text: 'CSV',
          className: 'btn btn-info btn-sm btn-corner btn-rounded',
          titleAttr: 'Download as Csv'
       },{
          extend: 'excelHtml5',
-         title: 'Data Lengkap',
+         title: 'Detail Data',
          text: 'EXCEL',
          className: 'btn btn-success btn-sm btn-corner',
          titleAttr: 'Download as Excel'
       },{
          extend: 'pdfHtml5',
-         title: 'Data Lengkap',
+         title: 'Detail Data',
          orientation: 'potrait',
          pageSize: 'A4',
          className: 'btn btn-danger btn-sm btn-corner',
