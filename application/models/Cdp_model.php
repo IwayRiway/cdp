@@ -31,6 +31,11 @@ class Cdp_model extends CI_model
         $this->db->insert('container', $data);
     }
 
+    public function getContainerById($id)
+    {
+        return $this->db->get_where('container', ['id' => htmlspecialchars($id)])->row_array();
+    }
+
     public function update($id)
     {
         $data = [
@@ -40,7 +45,7 @@ class Cdp_model extends CI_model
             'gate_in' => htmlspecialchars($this->input->post('gate_in')),
         ];
 
-        $this->db->update('container', $data, ['id' => htmlspecialchars($this->input->post('id'))]);
+        $this->db->update('container', $data, ['id' => htmlspecialchars($id)]);
     }
 
 }

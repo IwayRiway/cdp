@@ -84,11 +84,14 @@
    <div class="card round shadow-sm my-5">
       <div class="card-body">
          4.
-         <div class="d-grid justify-content-end">
+         <div class="d-grid justify-content-end mb-3">
             <a href="<?=base_url('cdp/create')?>" class="btn btn-primary btn-sm shadow-sm" >Tambah</a>
          </div>
 
-         <table class="table table-striped table-hover mt-5">
+         <div id="buttons2" style="padding: 10px; margin-bottom: 10px;width: 25%;">
+               <p>Export :</p>
+         </div>
+         <table class="table table-striped table-hover mt-5" id="myTable">
             <thead>
                <th>Container Number</th>
                <th>Size</th>
@@ -105,7 +108,7 @@
                      <td><?=$db['gate_in']?></td>
                      <td>
                         <a href="<?=base_url('cdp/detail/')?><?=$db['id']?>" class="btn btn-info btn-sm shadow-sm m-1" >Detail</a>
-                        <a href="<?=base_url('cdp/update/')?><?=$db['id']?>" class="btn btn-success btn-sm shadow-sm m-1" >Update</a>
+                        <a href="<?=base_url('cdp/update/')?><?=$db['id']?>" class="btn btn-success btn-sm shadow-sm m-1" >Edit</a>
                         <a href="<?=base_url('cdp/delete/')?><?=$db['id']?>" class="btn btn-danger tombol-hapus btn-sm shadow-sm m-1" >Delete</a>
                      </td>
                   </tr>
@@ -117,3 +120,27 @@
    </div>
    <!-- AKHIR -->
 </div>
+
+<script>
+   $(document).ready( function () {
+    var table2 = $('#myTable').DataTable();
+
+    var buttons2 = new $.fn.dataTable.Buttons(table2, {
+      buttons: [{
+         extend: 'excelHtml5',
+         title: 'Data Lengkap',
+         text: 'EXCEL',
+         className: 'btn btn-success btn-sm btn-corner',
+         titleAttr: 'Download as Excel'
+      },{
+         extend: 'pdfHtml5',
+         title: 'Data Lengkap',
+         orientation: 'potrait',
+         pageSize: 'A4',
+         className: 'btn btn-danger btn-sm btn-corner',
+         text: 'PDF',
+         titleAttr: 'Download as PDF',
+      }, ],
+   }).container().appendTo($('#buttons2'));
+} );
+</script>

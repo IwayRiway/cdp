@@ -70,6 +70,7 @@ class Cdp extends CI_Controller {
 
     public function update($id){
         $data['judul'] = 'Update Data';
+        $data['container'] = $this->Cdp_model->getContainerById($id);
 
         $this->form_validation->set_rules('container_no', 'No. Container', 'required|trim', [
             'required' => '* Wajib di isi',
@@ -88,7 +89,6 @@ class Cdp extends CI_Controller {
             $this->load->view('templates/header');
             $this->load->view('cdp/update', $data);
             $this->load->view('templates/footer');
-            
         } else {
             $this->Cdp_model->update($id);
             $this->session->set_flashdata('info', 'Data Berhasil Diubah');
@@ -102,5 +102,13 @@ class Cdp extends CI_Controller {
         $this->session->set_flashdata('warning', 'Data Berhasil DIhapus');
         redirect('cdp');
     }
-    
+
+    public function detail($id)
+    {
+        $data['container'] = $this->Cdp_model->getContainerById($id);
+        $this->load->view('templates/header');
+        $this->load->view('cdp/detail', $data);
+        $this->load->view('templates/footer');
+    }
+
 }
